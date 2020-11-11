@@ -74,7 +74,7 @@ Thumbs.db
 
 # ignore log files and databases
 *.log
-*.sql
+# *.sql # We want to syncronize the dump file
 *.sqlite
 
 # ignore compiled files
@@ -99,7 +99,7 @@ Thumbs.db
 *.der
 *.key
 *.pem
-# server_settings.js # INCLUDE THIS BEFORE MOVING INTO PRODUCTION!
+server_settings.js
 
 # -------------------------
 # BEGIN Whitelisted Files
