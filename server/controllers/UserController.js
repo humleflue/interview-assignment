@@ -24,9 +24,10 @@ class UserController {
     const user = new User(userId);
     await user.get();
 
-    // Check data integrety. Throw an error if data integrety isn't maintained.
+    // Write the user to a file and check if data integrety has been maintained.
     const filePath = path.join(deletedUsersFilesDir, `${user.id}.json`);
     const userInFile = await user.writeToFile(filePath);
+    // Throw an error if data integrety isn't maintained.
     if (!user.isEqual(userInFile)) {
       throw new HTTPError(500, `Unable to retain data integrety. Delete aborted.`,
         `The server was unable to maintain data integrety when trying to log the user to a file. Delete aborted.`);

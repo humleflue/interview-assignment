@@ -1,4 +1,4 @@
-const defaultStatus  = 500;   // Internal Server Error"
+const defaultStatus  = 500;   // Internal Server Error
 const defaultMessage = `Sorry, something went wrong. Please try again later. `
                      + `If the problem persists please contact support with error code 42`;
 
