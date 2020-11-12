@@ -1,6 +1,6 @@
 const _ = require(`lodash`);
 
-const db = require(`../models/database/Database`);
+const db = require(`./database/Database`);
 const HTTPError = require(`../helpers/HTTPError`);
 const pfs = require(`../helpers/PromisifiedFs`);
 
