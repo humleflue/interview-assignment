@@ -7,7 +7,7 @@ async function checkDatabaseConnection(req, res) {
     status += `up and running!`;
   }
   catch (error) {
-    if (global.conf.logErrors) {
+    if (global.conf.LOG_ERRORS) {
       console.log(error.stack);
     }
     status += `down. Sorry.`;

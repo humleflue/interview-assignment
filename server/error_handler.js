@@ -7,11 +7,12 @@ module.exports = (express, app) => {
     const expected = err.name === `HTTPError`;
 
     // Logs all info about the error
-    if (global.conf.logErrors) {
+    if (global.conf.LOG_ERRORS) {
       const log = expected ? `Error (${err.status}): ${err.info}\n${err.stack}` : err.stack;
       console.error(log);
     }
-    else if (global.conf.log) { // Logs on one line only
+    // Logs on one line only
+    else if (global.conf.LOG) {
       const log = expected ? `Error (${err.status}): ${err.info}` : err;
       console.error(log);
     }

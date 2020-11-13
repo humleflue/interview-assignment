@@ -99,7 +99,7 @@ Thumbs.db
 *.der
 *.key
 *.pem
-server_settings.js
+# server_settings.js # Uncomment before moving into production
 
 # -------------------------
 # BEGIN Whitelisted Files
