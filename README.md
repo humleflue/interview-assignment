@@ -4,7 +4,7 @@ This is an interview assignment made by CEGO. The assignment description can be 
 ## Preface
 I know that I have done a lot more than what the assignment suggested. I only did this to challenge myself because I found the assignment fun and entertaining. Also, I have made a node api in the past, which I used here as a template. I have tried to minimize the fluff though, and hopefully the **Reviewing my code** section will clear up, where to find the important parts :)
 
-I have also tagged all parts, which are relevant to the assignment with `IA:` in the comments.
+I have used the tag `IA:` in the comments in the code, to mark the parts of the code, which are directly related to the assignment.
 
 ## Setup
 To be able to run the program you need to do the following:
@@ -17,13 +17,13 @@ To be able to run the program you need to do the following:
 
 ## Reviewing my code
 After the setup has been completed, you can now test that the assignment has been done, by sending a HTTP DELETE-request with Postman to the server on the follwing URI:
-* `http://localhost:3000/api/users/id/INSERT-ID-HERE`
+`http://localhost:3000/api/users/id/INSERT-ID-HERE`
 
 You can also query for all users by sending a GET-request to the following URI (Not part of the assignment, but it makes it easy to find a new ID to delete by):
-* `http://localhost:3000/api/users`
+`http://localhost:3000/api/users`
 
 The most essential parts of the code for solving the task can be found in the following directories:
-* **UserController:** `server/controllers/UserController.js`
+* **User controller:** `server/controllers/UserController.js`
   * This is the controller, which handles all user related requests and communicates with the User model
-* **User (model):** `server/models/User.js`
+* **User model:** `server/models/User.js`
   * This is the model, which communicates with the database and thereby represents the data in the database.
