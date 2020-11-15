@@ -1,10 +1,10 @@
-/* Formål: "Padder" en streng til en længde, så læsbarheden øges.
- * Input:  @strIn den streng som skal paddes
- *         @newStrLen kan både være positiv og negativ
- *         - Hvis længden er positiv justere den til venstre.
- *         - Er længden derimod negativ, justere den til højre.
- *         @padChar den karakter som skal udfylde de tomme pladser i strengen
- * Output: Returnere den "paddede" streng
+/* Purpurse: Pads a string to a certain length.
+ * Input:    @strIn The string which the function applies padding to.
+ *           @newStrLen can be both positive and negative:
+ *           - If the length is positive, the string gets adjusted to the left
+ *           - If the length is negative, the string gets adjusted to the right
+ *           @padChar is the character, which fills of the padding space.
+ * Output:   Returns the padded string.
  */
 function pad(strIn, newStrLen, padChar) {
   const str = `${strIn}`; // All input gets converted to string.
@@ -16,7 +16,8 @@ function pad(strIn, newStrLen, padChar) {
   }
   // This means that there's padding which has to be applied
   else {
-    const padding = Array(paddingLength + 1).join(padChar); // Adding 1 is needed because we're joining empty array spaces
+    // Adding 1 is needed because we're joining empty array spaces
+    const padding = Array(paddingLength + 1).join(padChar);
     newStr = newStrLen > 0 ? str + padding : padding + str;
   }
   return newStr;

@@ -8,7 +8,7 @@ require(`express-async-errors`);       // With this we don't have to pass errors
 /* Internal modules */
 const apiRouter        = require(`./server/routing/apiRouter`);
 const handleErrors     = require(`./server/error_handler`);
-const middleWare       = require(`./server/middleware`);
+const middleware       = require(`./server/middleware`);
 const consoleLogToFile = require(`./server/helpers/consol_log_file`);
 const database         = require(`./server/models/database/Database`);
 
@@ -20,7 +20,7 @@ database.loadData();                        // IA: Make sure that the mock data 
 
 /* Middleware */
 if (global.conf.LOG) {
-  app.use(middleWare.logger); // Logs requests to console
+  app.use(middleware.logger); // Logs requests to console
 }
 
 /* Routing */

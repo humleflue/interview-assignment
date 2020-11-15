@@ -1,6 +1,8 @@
 const fs = require(`fs`);
 
 // This calss is used to avoid callback hell.
+// The class is an adapter,
+// which turns functions from the fs library into promises
 class PromisifiedFs {
   async writeFile(filePath, data) {
     return new Promise((resolve, reject) => {

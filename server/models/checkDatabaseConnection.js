@@ -1,5 +1,6 @@
 const db = require(`./database/Database`);
 
+// Checks if a connection to the database can be established
 async function checkDatabaseConnection(req, res) {
   let status = `API is `;
   try {
