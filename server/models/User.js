@@ -4,8 +4,7 @@ const db        = require(`./database/Database`);
 const HTTPError = require(`../helpers/HTTPError`);
 const pfs       = require(`../helpers/PromisifiedFs`);
 
-// IA: The user model,
-//     which handles all comunication with the db concerning users
+// IA: The user model, which handles all comunication with the db concerning users
 class User {
   constructor(id, firstName, lastName, email) {
     this.id = id;
@@ -24,10 +23,9 @@ class User {
   // Returns an array of all users in the db
   async getAll() {
     try {
-      const users = [];
-
       const dataArray = await db.query(`SELECT * FROM users`);
 
+      const users = [];
       dataArray.forEach((userData) => {
         const user = new User().constructFromObject(userData);
         users.push(user);
@@ -36,11 +34,11 @@ class User {
       return users;
     }
     catch (err) {
-      throw new HTTPError(500, err, `Internal Server Error.`);
+      throw new HTTPError(503, err, `Service Unavailable.`);
     }
   }
 
-  // Get's this instance of the user from the db
+  // IA: Get's this instance of the user from the db
   async get() {
     let userData;
 
@@ -58,11 +56,12 @@ class User {
         `The server was unable to find a user with id: ${this.id}.`);
     }
 
+    // Construct this object
     this.constructFromObject(userData);
     return this;
   }
 
-  // Deletes this instance of the user from the db
+  // IA: Deletes this instance of the user from the db
   async delete() {
     try {
       await db.query(`DELETE FROM users WHERE id = '${this.id}'`);
@@ -77,31 +76,31 @@ class User {
     });
   }
 
-  // Writes the user to a JSON-file
-  // Validates that data integrety has been maintained
+  // IA: Writes the user to a JSON-file.
+  //     Validates that data integrety has been maintained,
+  //     by comparing the written user data to an instance of this object.
+  //     Throws an error if data integrety isn't maintained.
   async writeToFile(jsonFilePath) {
     try {
       await pfs.writeFile(jsonFilePath, JSON.stringify(this));
-      return await pfs.readFile(jsonFilePath)
+      const userInFile = await pfs.readFile(jsonFilePath)
         .then((x) => JSON.parse(x))
-        .then((x) => new User().constructFromObject(x))
-        .then((x) => validateIntegrety(this, x));
+        .then((x) => new User().constructFromObject(x));
+
+      if (!this.isEqualTo(userInFile)) {
+        throw new Error(`The server was unable to maintain data integrety when trying to log the user to a file.`);
+      }
     }
     catch (err) {
       throw new HTTPError(500, err, `Internal Server Error.`);
     }
   }
 
-  // Validates the integrety of the given user,
-  // by comparing the given user to an instance of this object.
-  // Throws an error, if data integrety isn't maintained.
+  // IA: Determines whether a given user is identical by value to an instance of this class,
+  //     Returns true if they are identical, returns false if they are not.
+  isEqualTo(user) {
+    return _.isEqual(this, user);
+  }
 }
 
 module.exports = User;
-
-function validateIntegrety(user1, user2) {
-  if (!_.isEqual(user1, user2)) {
-    throw new HTTPError(500, `Unable to retain data integrety.`,
-      `The server was unable to maintain data integrety when trying to log the user to a file.`);
-  }
-}
