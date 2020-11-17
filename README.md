@@ -11,7 +11,7 @@ To be able to run the program you need to do the following:
 * Download and install nodejs: https://nodejs.org/en/
 * Clone this repo
 * Navigate to the root directory of the cloned content
-* Run `npm i` to install all dependencies
+* Run `npm i --production` to install all necessary dependencies
 * Run `npm start` to start the server
 * Install Postman to be able to test the API: https://www.postman.com/
 
@@ -24,7 +24,8 @@ You can also query for all users by sending a GET-request to the following URI (
 
 `http://localhost:3000/api/users`
 
-I've tagged all of the code related to the assignment with the tag `// IA: `.
+As I stated in the preface, I've tagged all of the code related to the assignment with the tag `IA:`.
+
 The most essential parts of the code for solving the task can be found in the following directories:
 * **User controller:** `server/controllers/UserController.js`
   * This is the controller, which handles all user related requests and communicates with the User model
