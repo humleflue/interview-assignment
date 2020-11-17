@@ -25,7 +25,6 @@ You can also query for all users by sending a GET-request to the following URI (
 `http://localhost:3000/api/users`
 
 As I stated in the preface, I've tagged all of the code related to the assignment with the tag `IA:`.
-
 The most essential parts of the code for solving the task can be found in the following directories:
 * **User controller:** `server/controllers/UserController.js`
   * This is the controller, which handles all user related requests and communicates with the User model
