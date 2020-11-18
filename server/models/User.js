@@ -25,8 +25,7 @@ class User {
     const db = new Database();
 
     try {
-      db.connect();
-      const dataArray = await db.query(`SELECT * FROM users`);
+      const dataArray = await db.connect().query(`SELECT * FROM users`);
       const users = dataArray.map((x) => new User().constructFromObject(x));
       return users;
     }
@@ -44,8 +43,7 @@ class User {
     const db = new Database();
 
     try {
-      db.connect();
-      userData = await db.query(`SELECT * FROM users WHERE id = '${this.id}'`)
+      userData = await db.connect().query(`SELECT * FROM users WHERE id = '${this.id}'`)
         .then((x) => x[0]);
     }
     catch (err) {
@@ -71,8 +69,7 @@ class User {
     const db = new Database();
 
     try {
-      db.connect();
-      await db.query(`DELETE FROM users WHERE id = '${this.id}'`);
+      await db.connect().query(`DELETE FROM users WHERE id = '${this.id}'`);
     }
     catch (err) {
       throw new HTTPError(503, err, `Service Unavailable.`);

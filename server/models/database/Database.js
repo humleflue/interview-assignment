@@ -13,6 +13,7 @@ class Database {
         throw err;
       }
     });
+    return this;
   }
 
   // Closes the active connection to the database
@@ -30,6 +31,7 @@ class Database {
     this.db.exec(dataSql, (err) => {
       // if(err) Script has already been executed once before
     });
+    return this;
   }
 
   // Sends a query to the database

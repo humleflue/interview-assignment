@@ -20,9 +20,7 @@ consoleLogToFile(); // Modifies the console, such that it writes logs into the s
 // IA: Make sure that the mock data has been loaded to the db
 const mockDataPath = path.join(__dirname, `server`, `models`, `database`, `sqldump.sql`);
 const db = new Database();
-db.connect();
-db.execute(mockDataPath);
-db.close();
+db.connect().execute(mockDataPath).close();
 
 /* Middleware */
 if (global.conf.LOG) {
