@@ -24,13 +24,7 @@ class User {
   async getAll() {
     try {
       const dataArray = await db.query(`SELECT * FROM users`);
-
-      const users = [];
-      dataArray.forEach((userData) => {
-        const user = new User().constructFromObject(userData);
-        users.push(user);
-      });
-
+      const users = dataArray.map((x) => new User().constructFromObject(x));
       return users;
     }
     catch (err) {
