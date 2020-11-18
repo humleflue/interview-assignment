@@ -6,6 +6,10 @@ const dbSource = path.join(__dirname, `db.sqlite`);
 
 // This class is an adapter/wrapper of the sqlite module
 class Database {
+  constructor(databaseConnection = undefined) {
+    this.db = databaseConnection;
+  }
+
   // Establishes a new connection to the database
   connect() {
     this.db = new sqlite3.Database(dbSource, (err) => {
