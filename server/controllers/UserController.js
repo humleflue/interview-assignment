@@ -23,7 +23,7 @@ class UserController {
     await user.writeToFile(filePath);
 
     await user.delete();
-    res.status(204).send();
+    res.status(204).send(); // 204: No Content
   }
 }
 
