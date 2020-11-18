@@ -29,7 +29,9 @@ class Database {
   execute(filePath) {
     const dataSql = fs.readFileSync(filePath).toString();
     this.db.exec(dataSql, (err) => {
-      // if(err) Script has already been executed once before
+      if (err) {
+        // Script has already been executed once before
+      }
     });
     return this;
   }
