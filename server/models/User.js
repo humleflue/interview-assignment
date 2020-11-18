@@ -1,6 +1,6 @@
 const _ = require(`lodash`);
 
-const db        = require(`./database/Database`);
+const Database  = require(`./database/Database`);
 const HTTPError = require(`../helpers/HTTPError`);
 const pfs       = require(`../helpers/PromisifiedFs`);
 
@@ -22,7 +22,10 @@ class User {
 
   // Returns an array of all users in the db
   async getAll() {
+    const db = new Database();
+
     try {
+      db.connect();
       const dataArray = await db.query(`SELECT * FROM users`);
       const users = dataArray.map((x) => new User().constructFromObject(x));
       return users;
@@ -30,18 +33,26 @@ class User {
     catch (err) {
       throw new HTTPError(503, err, `Service Unavailable.`);
     }
+    finally {
+      db.close();
+    }
   }
 
   // IA: Get's this instance of the user from the db
   async get() {
     let userData;
+    const db = new Database();
 
     try {
+      db.connect();
       userData = await db.query(`SELECT * FROM users WHERE id = '${this.id}'`)
         .then((x) => x[0]);
     }
     catch (err) {
       throw new HTTPError(503, err, `Service Unavailable.`);
+    }
+    finally {
+      db.close();
     }
 
     // If the user with the given id wasn't found: Throw an error.
@@ -57,11 +68,17 @@ class User {
 
   // IA: Deletes this instance of the user from the db
   async delete() {
+    const db = new Database();
+
     try {
+      db.connect();
       await db.query(`DELETE FROM users WHERE id = '${this.id}'`);
     }
     catch (err) {
       throw new HTTPError(503, err, `Service Unavailable.`);
+    }
+    finally {
+      db.close();
     }
 
     // Deconstruct this object
