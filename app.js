@@ -1,17 +1,17 @@
 /* eslint no-console: 0 */
 
 /* External modules */
+const path       = require(`path`);    // Directory path handling
 const express    = require(`express`); // For running the server
 const app        = express();          // For running the server
 require(`express-async-errors`);       // With this we don't have to pass errors like next(err) but can just throw them instead
-const path    = require(`path`);
 
 /* Internal modules */
-const apiRouter        = require(`./server/routing/apiRouter`);
-const handleErrors     = require(`./server/error_handler`);
-const middleware       = require(`./server/middleware`);
 const consoleLogToFile = require(`./server/helpers/consol_log_file`);
 const Database         = require(`./server/models/database/Database`);
+const middleware       = require(`./server/middleware`);
+const apiRouter        = require(`./server/routing/apiRouter`);
+const handleErrors     = require(`./server/error_handler`);
 
 /* Setup */
 global.conf = require(`./server_settings`); // Load settings into grobal variable (available across all scripts)
