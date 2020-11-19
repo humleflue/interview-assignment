@@ -1,5 +1,3 @@
-/* eslint no-console: 0 */
-
 /* External modules */
 const path       = require(`path`);    // Directory path handling
 const express    = require(`express`); // For running the server
@@ -32,4 +30,5 @@ app.use(`/api`, apiRouter); // IA: Handles all routing. Contains all api end-poi
 handleErrors(express, app);
 app.use((req, res) => res.sendStatus(404)); // Handles non-existing URI-requests. Has to be the last line before app.listen.
 
+/* eslint no-console: 0 */
 app.listen(global.conf.PORT, () => console.log(`Server is listening at http://localhost:${global.conf.PORT}`));
