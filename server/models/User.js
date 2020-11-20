@@ -77,27 +77,16 @@ class User {
     finally {
       db.close();
     }
-
-    // Deconstruct this object
-    Object.keys(this).forEach((key) => {
-      this[key] = undefined;
-    });
   }
 
   // IA: Writes the user to a JSON-file.
-  //     Validates that data integrety has been maintained,
-  //     by comparing the written user data to an instance of this object.
-  //     Throws an error if data integrety isn't maintained.
+  //     Returns the written data as a new User object
   async writeToFile(jsonFilePath) {
     try {
       await pfs.writeFile(jsonFilePath, JSON.stringify(this));
-      const userInFile = await pfs.readFile(jsonFilePath)
+      return await pfs.readFile(jsonFilePath)
         .then((x) => JSON.parse(x))
         .then((x) => new User().constructFromObject(x));
-
-      if (!this.isEqualTo(userInFile)) {
-        throw new Error(`The server was unable to maintain data integrety when trying to log the user to a file.`);
-      }
     }
     catch (err) {
       throw new HTTPError(500, err, `Internal Server Error.`);

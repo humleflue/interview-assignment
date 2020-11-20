@@ -1,5 +1,6 @@
 const path = require(`path`);
 
+const HTTPError = require(`../helpers/HTTPError`);
 const User = require(`../models/User`);
 
 // IA: The deleted users are concidered log files.
@@ -20,7 +21,15 @@ class UserController {
     const user = await new User(id).get();
 
     const filePath = path.join(deletedUsersFilesDir, `${user.id}.json`);
-    await user.writeToFile(filePath);
+    const userInFile = await user.writeToFile(filePath);
+    // Validate data integrety
+    if (!user.isEqualTo(userInFile)) {
+      throw new HTTPError(
+        500,
+        `The server was unable to maintain data integrety when trying to log the user to a file.`,
+        `Internal Server Error.`,
+      );
+    }
 
     await user.delete();
     res.status(204).send(); // 204: No Content
