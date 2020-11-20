@@ -20,7 +20,7 @@ After the setup has been completed, you can now test that the assignment has bee
 
 `http://localhost:3000/api/users/id/INSERT-ID-HERE`
 
-Alternatively you can press the button below to open a Postman collection containing the above request with a random ID:
+Alternatively you can press the button below to open a Postman collection made for easy testing of the above request, as it will generate a random ID automatically before each request:
 
 [![Run request in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b2818e1be7879c7e6fb6)
 
