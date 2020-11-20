@@ -22,7 +22,7 @@ After the setup has been completed, you can now test that the assignment has bee
 
 Alternatively you can press the button below to open a Postman collection made for easy testing of the above request, as it will generate a random ID automatically before each request:
 
-[![Run request in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b2818e1be7879c7e6fb6)
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b2818e1be7879c7e6fb6)
 
 As I stated in the preface, I've tagged all of the code related to the assignment with the tag `IA:`.
 The most essential parts of the code for solving the task can be found in the following directories:
