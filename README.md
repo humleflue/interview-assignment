@@ -1,4 +1,3 @@
-
 # CEGO job interview assignment
 This is an interview assignment made by CEGO. The assignment description can be found in the readme on the original repo (https://github.com/cego/interview-assignment).
 
@@ -21,8 +20,9 @@ After the setup has been completed, you can now test that the assignment has bee
 
 `http://localhost:3000/api/users/id/INSERT-ID-HERE`
 
-Alternatively you can press the button below to open a postman script, which will automatically test the api call:
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b2818e1be7879c7e6fb6)
+Alternatively you can press the button below to open a Postman collection containing the above request with a random ID:
+
+[![Run request in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b2818e1be7879c7e6fb6)
 
 As I stated in the preface, I've tagged all of the code related to the assignment with the tag `IA:`.
 The most essential parts of the code for solving the task can be found in the following directories:
