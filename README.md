@@ -1,4 +1,3 @@
-[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/c0545544a815b8750f40)
 
 # CEGO job interview assignment
 This is an interview assignment made by CEGO. The assignment description can be found in the readme on the original repo (https://github.com/cego/interview-assignment).
@@ -22,9 +21,8 @@ After the setup has been completed, you can now test that the assignment has bee
 
 `http://localhost:3000/api/users/id/INSERT-ID-HERE`
 
-You can also query for all users by sending a GET-request to the following URI (Not part of the assignment, but it makes it easy to find a new ID to delete by):
-
-`http://localhost:3000/api/users`
+Alternatively you can press the button below to open a postman script, which will automatically test the api call:
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b2818e1be7879c7e6fb6)
 
 As I stated in the preface, I've tagged all of the code related to the assignment with the tag `IA:`.
 The most essential parts of the code for solving the task can be found in the following directories:
